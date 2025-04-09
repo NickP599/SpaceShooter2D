@@ -6,7 +6,8 @@ public class AIController : MonoBehaviour
    public enum AIBehaviour
     {
         None,
-        Patrol
+        PatrolToTarget,
+        RandomPatrol
     }
 
     [SerializeField] private AIBehaviour m_AIBehaviour;
@@ -54,12 +55,13 @@ public class AIController : MonoBehaviour
   
     private void UpdateAI()
     {
-        if(m_AIBehaviour == AIBehaviour.None)
+        if(m_AIBehaviour == AIBehaviour.PatrolToTarget)
         {
-
+            ActionMoveToTargetPosition();
+            ActionControlShip();
         }
 
-        if(m_AIBehaviour == AIBehaviour.Patrol)
+        if(m_AIBehaviour == AIBehaviour.RandomPatrol)
         {
             UpdateBehaviourPatrol();
         }
@@ -67,7 +69,7 @@ public class AIController : MonoBehaviour
 
     private void UpdateBehaviourPatrol()
     {
-        ActionFindNewMovePosition();
+        ActionFindNewRandomMovePositionInPointZone();
         ActionControlShip();
         ActionFindNewAttackTarget();
         ActionFire();
@@ -134,7 +136,9 @@ public class AIController : MonoBehaviour
             Debug.DrawRay(transform.position,hit.point, Color.red);
         
             {
+                
                 /// добавить функционал ухода от столкновения с коллизией !!
+                /// или использовал NavMesh (для умного обхода препятствий)?
             }
         }
     }
@@ -155,12 +159,32 @@ public class AIController : MonoBehaviour
 
         angle = Mathf.Clamp(angle,-MAX_ANGEL,MAX_ANGEL ) / MAX_ANGEL;
 
-
         return - angle;
     }
 
-    private void ActionFindNewMovePosition() 
+    private void ActionMoveToTargetPosition()
     {
+        if(m_AIPointPatrol.TargetPoints.Length == 0) return;
+
+        Vector2 targetPoint = m_AIPointPatrol.TargetPoints[m_AIPointPatrol.CurrentPointIndex].position;
+
+        float distance = Vector2.Distance(targetPoint, transform.position);
+
+        bool isReachedTarget = distance < 0.2f;
+
+        if (!isReachedTarget)
+        {
+            m_MovePosition = targetPoint;
+        }
+        else
+        {
+            m_AIPointPatrol.CurrentPointIndex = (m_AIPointPatrol.CurrentPointIndex + 1 ) % m_AIPointPatrol.TargetPoints.Length;
+        }
+    }
+
+    private void ActionFindNewRandomMovePositionInPointZone() 
+    {
+        
         if (m_SelectedTarget != null)
         {
             m_MovePosition = m_SelectedTarget.transform.position;
@@ -179,7 +203,7 @@ public class AIController : MonoBehaviour
 
                         m_MovePosition = newPoint;
 
-                        m_RandomizeDirectionTimer.SetStartTime(m_RandomSelectMovePointTime);
+                        m_RandomizeDirectionTimer.RestartTimer();
                     }
                 }
                 else
@@ -192,7 +216,7 @@ public class AIController : MonoBehaviour
 
     public void SetPatrolBehaviour(AIPointPatrol patrol)
     {
-        m_AIBehaviour = AIBehaviour.Patrol;
+        m_AIBehaviour = AIBehaviour.RandomPatrol;
         m_AIPointPatrol = patrol;
     }
 

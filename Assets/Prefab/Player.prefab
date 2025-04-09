@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7a9f283dd44904c86b4b99439f95da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DoNotDestroyOnLoad: 0
+  m_DoNotDestroyOnLoad: 1
   m_NumLives: 3
   TimeToRespawn: 1
   m_Ship: {fileID: 0}
