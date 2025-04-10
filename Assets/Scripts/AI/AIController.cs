@@ -30,6 +30,7 @@ public class AIController : MonoBehaviour
     private SpaceShip m_SpaceShip;
 
     private Vector3 m_MovePosition;
+    private Vector3 m_LookAtPosition;
 
     private Destructible m_SelectedTarget;
 
@@ -57,17 +58,23 @@ public class AIController : MonoBehaviour
     {
         if(m_AIBehaviour == AIBehaviour.PatrolToTarget)
         {
-            ActionMoveToTargetPosition();
-            ActionControlShip();
+            UpdateBehaviourToTargetPatrol();
         }
 
         if(m_AIBehaviour == AIBehaviour.RandomPatrol)
         {
-            UpdateBehaviourPatrol();
+            UpdateBehaviourRandomPatrol();
         }
     }
+    private void UpdateBehaviourToTargetPatrol()
+    {
+       ActionFindMoveToTargetPosition();
+       ActionControlShip();
+       ActionEvadeCollision();
 
-    private void UpdateBehaviourPatrol()
+    }
+
+    private void UpdateBehaviourRandomPatrol()
     {
         ActionFindNewRandomMovePositionInPointZone();
         ActionControlShip();
@@ -124,29 +131,17 @@ public class AIController : MonoBehaviour
             m_FindNewTargetTimer.RestartTimer();
         }
     }
-   
+
     private void ActionEvadeCollision()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, m_EvadeRayLength);
-
-        if (hit)
-        {
-            m_MovePosition = transform.position + transform.right * 100.0f;
-
-            Debug.DrawRay(transform.position,hit.point, Color.red);
-        
-            {
-                
-                /// добавить функционал ухода от столкновения с коллизией !!
-                /// или использовал NavMesh (для умного обхода препятствий)?
-            }
-        }
+        //сделать урклонение через NavMesh
     }
 
-    private void ActionControlShip()
+private void ActionControlShip()
     {
         m_SpaceShip.ThrustControl = m_NavigationLinear;
-        m_SpaceShip.TorqueControl = ComputeAlignTorqueNormalized(m_MovePosition, m_SpaceShip.transform) * m_NavigationAngular;
+        m_SpaceShip.TorqueControl = ComputeAlignTorqueNormalized(m_LookAtPosition, m_SpaceShip.transform) * m_NavigationAngular;
+
     }
 
     private const float MAX_ANGEL = 45.0f;
@@ -162,7 +157,7 @@ public class AIController : MonoBehaviour
         return - angle;
     }
 
-    private void ActionMoveToTargetPosition()
+    private void ActionFindMoveToTargetPosition()
     {
         if(m_AIPointPatrol.TargetPoints.Length == 0) return;
 
@@ -181,13 +176,14 @@ public class AIController : MonoBehaviour
             m_AIPointPatrol.CurrentPointIndex = (m_AIPointPatrol.CurrentPointIndex + 1 ) % m_AIPointPatrol.TargetPoints.Length;
         }
     }
+   
 
     private void ActionFindNewRandomMovePositionInPointZone() 
     {
         
         if (m_SelectedTarget != null)
         {
-            m_MovePosition = m_SelectedTarget.transform.position;
+            SetMoveAndLookTarget(m_SelectedTarget.transform, m_SpaceShip.ThrustControl);
         }
         else
         {
@@ -207,12 +203,47 @@ public class AIController : MonoBehaviour
                     }
                 }
                 else
-                {
+                {                 
                     m_MovePosition = m_AIPointPatrol.transform.position;
                 }
             }
         }
     }
+
+    private void SetMoveAndLookTarget(Transform target, float moveSpeed, bool lookAtTargetInsteadOfLead = true)
+    {
+        Vector2 shipPos = m_SpaceShip.transform.position;
+        Vector2 targetPos = target.position;
+        Vector2 targetVelocity = Vector2.zero;
+
+        if (target.TryGetComponent<Rigidbody2D>(out var rb))
+            targetVelocity = rb.linearVelocity;
+
+        Vector2 offset = UnityEngine.Random.insideUnitCircle * 1.5f;
+
+        m_MovePosition = MakeLead(shipPos, targetPos, targetVelocity, moveSpeed) + offset;
+
+        m_LookAtPosition = lookAtTargetInsteadOfLead ? targetPos : m_MovePosition;
+
+        Debug.DrawLine(shipPos, m_MovePosition, Color.red, 0.1f);
+        Debug.DrawLine(shipPos, m_LookAtPosition, Color.green, 0.1f);
+    }
+
+    public static Vector2 MakeLead(Vector2 shooterPos, Vector2 targetPos, Vector2 targetVelocity, float moveSpeed)
+    {
+        if (moveSpeed <= 0.01f)
+            return targetPos;
+
+        Vector2 toTarget = targetPos - shooterPos;
+
+        float distance = toTarget.magnitude;
+
+        float timeToReach = distance / moveSpeed;
+
+        return targetPos + targetVelocity * timeToReach;
+    }
+
+
 
     public void SetPatrolBehaviour(AIPointPatrol patrol)
     {
