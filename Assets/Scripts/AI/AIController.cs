@@ -136,6 +136,16 @@ public class AIController : MonoBehaviour
 
     private void ActionEvadeCollision()
     {
+        if (Physics2D.Raycast(transform.position, transform.up, m_EvadeRayLength))
+        {
+            m_MovePosition = transform.position + transform.right * 1000f;
+        }
+      
+    }
+
+    /*
+    private void ActionEvadeCollision()
+    {
         if (m_SelectedTarget != null)
         {
             Vector2 moveDirection = (m_SelectedTarget.transform.position - m_SpaceShip.transform.position).normalized;
@@ -164,6 +174,7 @@ public class AIController : MonoBehaviour
         }
     }
 
+    */
 
     private void ActionControlShip()
     {
