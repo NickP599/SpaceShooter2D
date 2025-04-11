@@ -13,6 +13,8 @@ public class Turret : MonoBehaviour
     private float m_ReFireTime;
     public bool CanFire => m_ReFireTime <= 0;
 
+    [HideInInspector] public float ProjectileVelocity;
+
     private SpaceShip m_Ship;
     private AudioSource m_AudioSource;
   
@@ -35,6 +37,8 @@ public class Turret : MonoBehaviour
     {
         if (m_ReFireTime > 0)
             m_ReFireTime -= Time.deltaTime;
+
+        Debug.Log(ProjectileVelocity);
     }
 
     #endregion
@@ -59,6 +63,8 @@ public class Turret : MonoBehaviour
         Projectile projectile = Instantiate(m_TurretProperties.ProjectilePrefab);
         projectile.transform.position = transform.position;
         projectile.transform.up = transform.up;
+        
+        ProjectileVelocity = projectile.Velocity;
 
         projectile.SetParentDestructible(m_Ship);
  

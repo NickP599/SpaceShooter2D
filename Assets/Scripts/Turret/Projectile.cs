@@ -6,6 +6,7 @@ public class Projectile : Entity
     [SerializeField] protected float m_LifeTime;
     [SerializeField] protected int m_Damage;
     public int Damage => m_Damage;
+    public float Velocity => m_Velocity;    
 
     [SerializeField] protected ImpactEffect m_EffectPrefab;
 

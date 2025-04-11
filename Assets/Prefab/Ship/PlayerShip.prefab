@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Mode: 1
   m_TurretProperties: {fileID: 0}
+  ProjectileVelocity: 0
 --- !u!1 &1581883166044543584
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Mode: 0
   m_TurretProperties: {fileID: 11400000, guid: c29588a2180909c4888523efebd3c107, type: 2}
+  ProjectileVelocity: 0
 --- !u!1 &6185089374568146313
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Mode: 0
   m_TurretProperties: {fileID: 11400000, guid: c29588a2180909c4888523efebd3c107, type: 2}
+  ProjectileVelocity: 0
 --- !u!1 &7241848259776218486
 GameObject:
   m_ObjectHideFlags: 0
