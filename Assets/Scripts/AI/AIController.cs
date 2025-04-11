@@ -1,8 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class AIController : MonoBehaviour
-{
+{    
    public enum AIBehaviour
     {
         None,
@@ -33,6 +35,7 @@ public class AIController : MonoBehaviour
     private Vector3 m_LookAtPosition;
 
     private Destructible m_SelectedTarget;
+    private NavMeshAgent m_NavAgent;
 
     private Timer m_RandomizeDirectionTimer;
     private Timer m_FireTimer;
@@ -41,11 +44,10 @@ public class AIController : MonoBehaviour
     private void Start()
     {
        m_SpaceShip = GetComponent<SpaceShip>();
+       m_NavAgent = GetComponent<NavMeshAgent>();
+
        InitTimers();
-
-        float maxV = float.MaxValue;
-
-        Debug.Log(maxV);
+       
     }
 
     private void Update()
@@ -134,10 +136,36 @@ public class AIController : MonoBehaviour
 
     private void ActionEvadeCollision()
     {
-        //сделать урклонение через NavMesh
+        if (m_SelectedTarget != null)
+        {
+            Vector2 moveDirection = (m_SelectedTarget.transform.position - m_SpaceShip.transform.position).normalized;
+            Collider2D tragetColl = m_SelectedTarget.GetComponentInChildren<Collider2D>();
+
+            if (tragetColl != null)
+            {
+
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, m_EvadeRayLength);
+
+                if (hit.collider != null)
+                {
+                    if (hit.distance < 3)
+                    {
+
+                        if (hit.collider == tragetColl)
+                        {
+                            Vector2 avoidanceDirection = Vector2.Perpendicular(moveDirection).normalized;
+
+                            m_SpaceShip.transform.position = (Vector2)transform.position + avoidanceDirection * m_NavigationAngular;
+                          
+                        }
+                    }
+                }
+            }
+        }
     }
 
-private void ActionControlShip()
+
+    private void ActionControlShip()
     {
         m_SpaceShip.ThrustControl = m_NavigationLinear;
         m_SpaceShip.TorqueControl = ComputeAlignTorqueNormalized(m_LookAtPosition, m_SpaceShip.transform) * m_NavigationAngular;
@@ -158,29 +186,37 @@ private void ActionControlShip()
     }
 
     private void ActionFindMoveToTargetPosition()
-    {
-        if(m_AIPointPatrol.TargetPoints.Length == 0) return;
-
-        Vector2 targetPoint = m_AIPointPatrol.TargetPoints[m_AIPointPatrol.CurrentPointIndex].position;
-
-        float distance = Vector2.Distance(targetPoint, transform.position);
-
-        bool isReachedTarget = distance < 0.2f;
-
-        if (!isReachedTarget)
-        {
-            m_MovePosition = targetPoint;
+    {    
+        if (m_SelectedTarget != null)
+        {         
+            SetMoveAndLookTarget(m_SelectedTarget.transform, m_SpaceShip.ThrustControl);
         }
         else
         {
-            m_AIPointPatrol.CurrentPointIndex = (m_AIPointPatrol.CurrentPointIndex + 1 ) % m_AIPointPatrol.TargetPoints.Length;
+            if (m_AIPointPatrol.TargetPoints.Length == 0) return;
+
+            Vector2 targetPoint = m_AIPointPatrol.TargetPoints[m_AIPointPatrol.CurrentPointIndex].position;
+
+            float distance = Vector2.Distance(targetPoint, transform.position);
+
+            bool isReachedTarget = distance < 0.2f;
+
+            if (!isReachedTarget)
+            {
+                m_MovePosition = targetPoint;
+            }
+            else
+            {
+                m_AIPointPatrol.CurrentPointIndex = (m_AIPointPatrol.CurrentPointIndex + 1) % m_AIPointPatrol.TargetPoints.Length;
+            }
         }
+
     }
    
 
     private void ActionFindNewRandomMovePositionInPointZone() 
     {
-        
+
         if (m_SelectedTarget != null)
         {
             SetMoveAndLookTarget(m_SelectedTarget.transform, m_SpaceShip.ThrustControl);
@@ -215,11 +251,10 @@ private void ActionControlShip()
         Vector2 shipPos = m_SpaceShip.transform.position;
         Vector2 targetPos = target.position;
         Vector2 targetVelocity = Vector2.zero;
+        Vector2 offset = UnityEngine.Random.insideUnitCircle * 1.5f;
 
         if (target.TryGetComponent<Rigidbody2D>(out var rb))
-            targetVelocity = rb.linearVelocity;
-
-        Vector2 offset = UnityEngine.Random.insideUnitCircle * 1.5f;
+            targetVelocity = rb.linearVelocity; 
 
         m_MovePosition = MakeLead(shipPos, targetPos, targetVelocity, moveSpeed) + offset;
 
@@ -234,9 +269,9 @@ private void ActionControlShip()
         if (moveSpeed <= 0.01f)
             return targetPos;
 
-        Vector2 toTarget = targetPos - shooterPos;
+        Vector2 dir = targetPos - shooterPos;
 
-        float distance = toTarget.magnitude;
+        float distance = dir.magnitude;
 
         float timeToReach = distance / moveSpeed;
 
