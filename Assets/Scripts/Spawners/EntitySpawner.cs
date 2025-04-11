@@ -50,9 +50,13 @@ public class EntitySpawner : MonoBehaviour
         for(int i = 0; i < m_NumSpawns; i++)
         {
             int index = UnityEngine.Random.Range(0, m_EntityPrefabs.Length);
-            GameObject entity = Instantiate(m_EntityPrefabs[index]).gameObject;
 
+            GameObject entity = Instantiate(m_EntityPrefabs[index]).gameObject;
             entity.transform.position = m_CircleArea.GetRandomInsideZone;
+
+            Destructible dest = entity.GetComponent<Destructible>();
+            dest.m_TeamId = i;
+           
         }
     }
 }

@@ -20,7 +20,7 @@ public class Destructible : Entity
     public int HitPoints => m_CurrentHitPoints;
 
     
-    [SerializeField] private int m_TeamId;
+    [SerializeField] public int m_TeamId;
     public int TeamId => m_TeamId;
 
    
@@ -46,6 +46,7 @@ public class Destructible : Entity
     protected virtual void Start()
     {
         m_CurrentHitPoints = m_HitPoints;
+        
     }
 
     protected virtual void OnEnable()

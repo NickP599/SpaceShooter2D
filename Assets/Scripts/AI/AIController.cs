@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+
 public class AIController : MonoBehaviour
 {    
    public enum AIBehaviour
@@ -26,6 +26,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private float m_FindNewTargetTime;
 
     [SerializeField] private float m_ShootDelay;
+    [SerializeField] private float m_FindTargetDelayTime;
 
     [SerializeField] private float m_EvadeRayLength;
 
@@ -35,7 +36,6 @@ public class AIController : MonoBehaviour
     private Vector3 m_LookAtPosition;
 
     private Destructible m_SelectedTarget;
-    private NavMeshAgent m_NavAgent;
 
     private Timer m_RandomizeDirectionTimer;
     private Timer m_FireTimer;
@@ -44,10 +44,7 @@ public class AIController : MonoBehaviour
     private void Start()
     {
        m_SpaceShip = GetComponent<SpaceShip>();
-       m_NavAgent = GetComponent<NavMeshAgent>();
-
-       InitTimers();
-       
+       InitTimers();     
     }
 
     private void Update()
@@ -58,7 +55,8 @@ public class AIController : MonoBehaviour
   
     private void UpdateAI()
     {
-        if(m_AIBehaviour == AIBehaviour.PatrolToTarget)
+    
+        if (m_AIBehaviour == AIBehaviour.PatrolToTarget)
         {
             UpdateBehaviourToTargetPatrol();
         }
@@ -136,33 +134,33 @@ public class AIController : MonoBehaviour
 
     private void ActionEvadeCollision()
     {
+
+    }
+
+    /*
+    private void ActionEvadeCollision()
+    {
         if (m_SelectedTarget != null)
         {
             Vector2 moveDirection = (m_SelectedTarget.transform.position - m_SpaceShip.transform.position).normalized;
-            Collider2D tragetColl = m_SelectedTarget.GetComponentInChildren<Collider2D>();
+            Collider2D targetColl = m_SelectedTarget.GetComponentInChildren<Collider2D>();
 
-            if (tragetColl != null)
+            if (targetColl != null)
             {
-
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, m_EvadeRayLength);
 
-                if (hit.collider != null)
+                if (hit.collider != null && hit.distance < 3f && hit.collider == targetColl)
                 {
-                    if (hit.distance < 3)
-                    {
+                  
+                    Vector2 avoidanceDirection = Vector2.Perpendicular(moveDirection).normalized;
 
-                        if (hit.collider == tragetColl)
-                        {
-                            Vector2 avoidanceDirection = Vector2.Perpendicular(moveDirection).normalized;
-
-                            m_SpaceShip.transform.position = (Vector2)transform.position + avoidanceDirection * m_NavigationAngular;
-                          
-                        }
-                    }
+                    m_SpaceShip.transform.position = (Vector2)transform.position + avoidanceDirection * 0.6f;
+  
                 }
             }
         }
     }
+    */
 
 
     private void ActionControlShip()
@@ -264,6 +262,9 @@ public class AIController : MonoBehaviour
         Debug.DrawLine(shipPos, m_LookAtPosition, Color.green, 0.1f);
     }
 
+
+   
+
     public static Vector2 MakeLead(Vector2 shooterPos, Vector2 targetPos, Vector2 targetVelocity, float moveSpeed)
     {
         if (moveSpeed <= 0.01f)
@@ -293,6 +294,7 @@ public class AIController : MonoBehaviour
         m_RandomizeDirectionTimer = new Timer(m_RandomSelectMovePointTime);
         m_FireTimer = new Timer(m_ShootDelay);
         m_FindNewTargetTimer = new Timer(m_FindNewTargetTime);
+     
     }
 
     private void UpdateTimers()

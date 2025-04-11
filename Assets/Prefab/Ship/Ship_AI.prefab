@@ -498,12 +498,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AIBehaviour: 2
   m_AIPointPatrol: {fileID: 0}
-  m_NavigationLinear: 0.856
-  m_NavigationAngular: 0.639
+  m_NavigationLinear: 0.2
+  m_NavigationAngular: 0.6
   m_RandomSelectMovePointTime: 5
   m_FindNewTargetTime: 2
   m_ShootDelay: 2
-  m_EvadeRayLength: 20
+  m_FindTargetDelayTime: 0
+  m_EvadeRayLength: 10
 --- !u!114 &4471923505696329920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NickName: Player
   m_InDestructible: 0
-  m_HitPoints: 100
+  m_HitPoints: 40
   m_TeamId: 1
   m_EventOnDeath:
     m_PersistentCalls:
