@@ -7,28 +7,40 @@
       "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ai\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|c:\\unityprojects2025\\spaceshooterv2\\assets\\scripts\\ship\\spaceship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ship\\spaceship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\turret\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\turret\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\turret\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\turret\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|c:\\unityprojects2025\\spaceshooterv2\\assets\\scripts\\effects\\gravitywell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effects\\gravitywell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\destructible.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\destructible.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|c:\\unityprojects2025\\spaceshooterv2\\assets\\scripts\\turret\\distancebombprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\turret\\distancebombprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\input\\pointerclickhold.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\input\\pointerclickhold.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\destructible.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\destructible.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\spawners\\entityspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawners\\entityspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\input\\pointerclickhold.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\input\\pointerclickhold.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|C:\\UnityProjects2025\\SpaceShooterV2\\assets\\scripts\\turret\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6302C9A6-A6CE-F2FE-9DB6-7A7876DFBD06}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\turret\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 248,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -73,25 +85,64 @@
               "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SpaceShip.cs",
+              "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Ship\\SpaceShip.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Ship\\SpaceShip.cs",
+              "ToolTip": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Ship\\SpaceShip.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Ship\\SpaceShip.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA1wBoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-12T00:26:21.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GravityWell.cs",
+              "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Effects\\GravityWell.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effects\\GravityWell.cs",
+              "ToolTip": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Effects\\GravityWell.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effects\\GravityWell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-12T00:05:25.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DistanceBombProjectile.cs",
+              "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Turret\\DistanceBombProjectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Turret\\DistanceBombProjectile.cs",
+              "ToolTip": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Turret\\DistanceBombProjectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Turret\\DistanceBombProjectile.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T23:49:06.896Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Projectile.cs",
               "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Turret\\Projectile.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Turret\\Projectile.cs",
               "ToolTip": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Turret\\Projectile.cs",
               "RelativeToolTip": "Assets\\Scripts\\Turret\\Projectile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wCMAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-11T18:44:18.199Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "Turret.cs",
               "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Turret\\Turret.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Turret\\Turret.cs",
@@ -110,50 +161,53 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\AIController.cs",
               "ToolTip": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\AI\\AIController.cs",
               "RelativeToolTip": "Assets\\Scripts\\AI\\AIController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAlwI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-01T18:25:30.31Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "EntitySpawner.cs",
               "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Spawners\\EntitySpawner.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Spawners\\EntitySpawner.cs",
               "ToolTip": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Spawners\\EntitySpawner.cs",
               "RelativeToolTip": "Assets\\Scripts\\Spawners\\EntitySpawner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T20:21:54.654Z"
+              "WhenOpened": "2025-04-09T20:21:54.654Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Destructible.cs",
               "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Destructible.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Destructible.cs",
               "ToolTip": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Destructible.cs",
               "RelativeToolTip": "Assets\\Scripts\\Destructible.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAuwCMAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAWwCIAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T20:11:34.286Z"
+              "WhenOpened": "2025-04-09T20:11:34.286Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Timer.cs",
               "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Timer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Timer.cs",
               "ToolTip": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Timer.cs",
               "RelativeToolTip": "Assets\\Scripts\\Timer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA6wB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T18:33:32.187Z"
+              "WhenOpened": "2025-04-01T18:33:32.187Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "PointerClickHold.cs",
               "DocumentMoniker": "C:\\UnityProjects2025\\SpaceShooterV2\\Assets\\Scripts\\Input\\PointerClickHold.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Input\\PointerClickHold.cs",
@@ -161,7 +215,8 @@
               "RelativeToolTip": "Assets\\Scripts\\Input\\PointerClickHold.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T15:05:28.926Z"
+              "WhenOpened": "2025-04-01T15:05:28.926Z",
+              "EditorCaption": ""
             }
           ]
         },

@@ -15,7 +15,9 @@ public class AIController : MonoBehaviour
     }
 
     #endregion
-
+    //сделать: сделать максимальный угол упреждения,eсли угол слишком большой , то скорость поворота становиться ровна мин или 0
+    
+   
     #region Serialized Fields
 
     [SerializeField] private AIBehaviour m_AIBehaviour;
@@ -28,7 +30,9 @@ public class AIController : MonoBehaviour
     [SerializeField] private float m_RandomSelectMovePointTime;
     [SerializeField] private float m_FindNewTargetTime;
     [SerializeField] private float m_ShootDelay;
+    [SerializeField] private float m_AccelerateTime;
     [SerializeField] private float m_EvadeRayLength;
+
 
     #endregion
 
@@ -44,6 +48,7 @@ public class AIController : MonoBehaviour
     private Timer m_RandomizeDirectionTimer;
     private Timer m_FireTimer;
     private Timer m_FindNewTargetTimer;
+    private Timer m_AccelerateTimer;
 
     #endregion
 
@@ -81,10 +86,13 @@ public class AIController : MonoBehaviour
 
     private void UpdateBehaviourToTargetPatrol()
     {
-        ActionFindMoveToTargetPosition();
+        ActionFindNewAttackTarget();  
+        ActionFindMoveToTargetPosition();  
         ActionControlShip();
+        ActionFire();
         ActionEvadeCollision();
     }
+
 
     private void UpdateBehaviourRandomPatrol()
     {
@@ -117,12 +125,25 @@ public class AIController : MonoBehaviour
         }
     }
 
+   
     private void ActionEvadeCollision()
-    {
-        if (Physics2D.Raycast(transform.position, transform.up, m_EvadeRayLength))
+    {    
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, m_EvadeRayLength);
+
+        if (hit.collider != null)
         {
-            m_MovePosition = transform.position + transform.right * 1000f;
+            if (hit.collider != null)
+            {       
+                Vector2 evadeDirection = (m_SpaceShip.transform.position - hit.collider.transform.position).normalized;
+            
+                m_MovePosition = (Vector2)transform.position + evadeDirection * 100f;
+
+
+                Debug.DrawLine(transform.position, hit.collider.transform.position, Color.red);
+            }
+
         }
+     
     }
 
     private void ActionControlShip()
@@ -133,16 +154,21 @@ public class AIController : MonoBehaviour
 
     private void ActionFindMoveToTargetPosition()
     {
+       
+       
         if (m_SelectedTarget != null)
-        {
+        {     
             SetMoveAndLookTarget(m_SelectedTarget.transform, m_SpaceShip.ThrustControl);
         }
-        else
+        
+        else 
         {
             if (m_AIPointPatrol.TargetPoints.Length == 0) return;
 
             Vector2 targetPoint = m_AIPointPatrol.TargetPoints[m_AIPointPatrol.CurrentPointIndex].position;
+
             float distance = Vector2.Distance(targetPoint, transform.position);
+
             bool isReachedTarget = distance < 0.2f;
 
             if (!isReachedTarget)
@@ -269,6 +295,8 @@ public class AIController : MonoBehaviour
         m_RandomizeDirectionTimer = new Timer(m_RandomSelectMovePointTime);
         m_FireTimer = new Timer(m_ShootDelay);
         m_FindNewTargetTimer = new Timer(m_FindNewTargetTime);
+        m_AccelerateTimer = new Timer(m_AccelerateTime);
+
     }
 
     private void UpdateTimers()
@@ -276,6 +304,7 @@ public class AIController : MonoBehaviour
         m_RandomizeDirectionTimer.RemoveTime(Time.deltaTime);
         m_FireTimer.RemoveTime(Time.deltaTime);
         m_FindNewTargetTimer.RemoveTime(Time.deltaTime);
+        m_AccelerateTimer.RemoveTime(Time.deltaTime);
     }
 
     #endregion

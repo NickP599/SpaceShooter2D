@@ -21,7 +21,15 @@ public class Destructible : Entity
 
     
     [SerializeField] private int m_TeamId;
-    public int TeamId => m_TeamId;
+    public int TeamId
+    {
+        get => m_TeamId;
+        set
+        {
+            if (value >= 0)
+                m_TeamId = value;
+        }
+    }
 
    
     [SerializeField] private UnityEvent m_EventOnDeath;
