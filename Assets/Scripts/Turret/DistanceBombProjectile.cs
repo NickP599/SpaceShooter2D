@@ -49,6 +49,7 @@ public class DistanceBombProjectile : Projectile
             if (hit.collider.transform.root.TryGetComponent<Destructible>(out Destructible destructible))
             {
                 destructible.ApplyDamage(m_Damage);
+                AddScoresAndKill(destructible);
 
                 OnProjectileLifeEnd(hit.collider, hit.point);
             }

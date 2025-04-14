@@ -2,46 +2,41 @@
 
 public class LaserProjectile : Projectile
 {
-    [SerializeField] private float m_defDistanceRat = 10f; // Максимальная длина луча
+    [SerializeField] private float m_defDistanceRat = 10f;
 
     private LineRenderer m_LineRenderer;
     private Transform m_Target;
 
+    private Vector2 m_EndPos;
     private void Awake()
     {
         m_LineRenderer = GetComponentInChildren<LineRenderer>();
     }
 
-
     private void Update()
     {
-        // Выполняем Raycast с указанием максимальной дистанции
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, m_defDistanceRat);
+        Destroy(gameObject, m_LifeTime);
 
-        Vector2 endPos;
-        if (hit.collider != null && hit.transform != m_Parent.transform)
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, m_defDistanceRat);
+
+        m_EndPos = (Vector2)transform.position + (Vector2)transform.up * m_defDistanceRat;
+
+        foreach (RaycastHit2D hit in hits)
         {
-            // Если луч попал в объект, используем точку попадания
-            endPos = hit.point;
-            m_Target = hit.transform;
-        
-            // Наносим урон, если цель разрушима
-            if (m_Target.root.TryGetComponent(out Destructible destructible))
+            if (hit.collider != null && hit.transform != m_Parent.transform)
             {
-                destructible.ApplyDamage(m_Damage);
+                m_EndPos = hit.point;
+                m_Target = hit.transform;
+
+                foreach (Destructible destructible in hit.transform.root.GetComponents<Destructible>())
+                {
+                    destructible.ApplyDamage(m_Damage);
+                    AddScoresAndKill(destructible);            
+                }
             }
         }
-        else
-        {
-            // Если ничего не попало, рисуем луч на максимальную дистанцию
-            endPos = (Vector2)transform.position + (Vector2)transform.up * m_defDistanceRat;
-            m_Target = null;
-        }
 
-        // Рисуем лазер от начальной точки до конечной
-        Draw2DRay(transform.position, endPos);
-
-        // Отладка: визуализация луча
+        Draw2DRay(transform.position, m_EndPos);
         Debug.DrawRay(transform.position, transform.up * m_defDistanceRat, Color.red, 0.1f);
     }
 
@@ -51,4 +46,3 @@ public class LaserProjectile : Projectile
         m_LineRenderer.SetPosition(1, endPos);
     }
 }
-

@@ -31,12 +31,15 @@ public class Destructible : Entity
         }
     }
 
+    [SerializeField] private int m_ScoreValue;
+    public int ScoreValue => m_ScoreValue;
    
+
     [SerializeField] private UnityEvent m_EventOnDeath;
     public UnityEvent EventOnDeath => m_EventOnDeath;
 
     /// <summary>
-    /// Набор всех разрушаемых объектов.
+    /// Быстрый список хранит сылки на всех разрушаемые объекты .
     /// </summary>
     private static HashSet<Destructible> m_AllDestructible;
     public static IReadOnlyCollection<Destructible> AllDestructible => m_AllDestructible;

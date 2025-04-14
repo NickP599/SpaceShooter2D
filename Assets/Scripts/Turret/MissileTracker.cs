@@ -9,14 +9,14 @@ public class MissileTracker : Projectile
 
     private Transform m_Target;
     //Изменить класс !!! 
-    private void Update()//Изменить класс !!! 
+    private void Update()
     {
         float stepLength = m_Velocity * Time.deltaTime;
         Vector2 step = transform.up * stepLength;
 
         if (m_Target == null)
         {
-            // Поиск цели с помощью CircleCast
+            
             RaycastHit2D hit = Physics2D.CircleCast(transform.position, m_DetectionRadius, transform.up, m_MaxDistance);
 
             if (hit.collider != null)
@@ -27,7 +27,7 @@ public class MissileTracker : Projectile
         
         if(m_Target != null)
         {
-            // Поворот к цели
+            
             Vector2 direction = (m_Target.transform.position - transform.position).normalized;
             transform.up = Vector2.Lerp(transform.up ,direction, Time.deltaTime * m_Velocity);
         }
@@ -40,6 +40,8 @@ public class MissileTracker : Projectile
             {
                 if (destructible != m_Parent)
                     destructible.ApplyDamage(m_Damage);
+
+                   AddScoresAndKill(destructible);
             }
 
             OnProjectileLifeEnd(hitToDamage.collider, hitToDamage.point);
@@ -57,7 +59,7 @@ public class MissileTracker : Projectile
 
     }
 
- 
+   
 
     private void OnProjectileLifeEnd(Collider2D col, Vector2 pos)
     {

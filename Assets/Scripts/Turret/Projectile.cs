@@ -12,7 +12,7 @@ public class Projectile : Entity
 
     protected float m_Timer;
 
-    private void  FixedUpdate()
+    private void  Update()
     {
         float stepLength = m_Velocity * Time.fixedDeltaTime;
 
@@ -28,6 +28,8 @@ public class Projectile : Entity
             {  
                 if(destructible != m_Parent)             
                    destructible.ApplyDamage(m_Damage);
+
+                AddScoresAndKill(destructible);
             }
 
             OnProjectileLifeEnd(hit.collider, hit.point); 
@@ -45,6 +47,22 @@ public class Projectile : Entity
     }
 
     protected Destructible m_Parent;
+
+    protected  void AddScoresAndKill(Destructible destructible)
+    {
+        if (m_Parent == Player.Instance.ActiveShip)
+        {
+            Player.Instance.AddScores(destructible.ScoreValue);
+
+            if (destructible is SpaceShip)
+            {
+                if (destructible.HitPoints <= 0)
+                {
+                    Player.Instance.AddKill();
+                }
+            }
+        }
+    }
 
     public void SetParentDestructible(Destructible parent)
     {

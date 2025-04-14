@@ -13,12 +13,14 @@ public class Player : SingletonBase<Player>
     [SerializeField] private MovementControl m_MovementControl;
     [SerializeField] private AxisLockMovementControl m_AxisMovementControl;
 
+    private int m_Score;
+    private int m_NumKills;
+    public int Scores => m_Score;
+    public int NumKills => m_NumKills;
 
     private void Start()
     {
-        m_Ship.EventOnDeath.AddListener(OnShipDeath);
-
-        
+        m_Ship.EventOnDeath.AddListener(OnShipDeath);        
     }
 
     private void OnShipDeath()
@@ -41,5 +43,15 @@ public class Player : SingletonBase<Player>
         m_CameraController.SetTarget(m_Ship.transform);
         m_MovementControl.SetTargetShip(m_Ship);
         m_AxisMovementControl.SetTargetShip(m_Ship);
+    }
+
+    public void AddKill()
+    {
+        m_NumKills++;
+    }
+
+    public void AddScores(int num)
+    {
+        m_Score += num;
     }
 }
